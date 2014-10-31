@@ -3,7 +3,7 @@
 
 $(document).bind('pagebeforecreate', function(event){
     var page_id = event.target.id;
-    //PUSH_NOTIFICATION_TOKEN = "9999";
+    PUSH_NOTIFICATION_TOKEN = "9999";
     if(page_id == "view" && PUSH_NOTIFICATION_TOKEN == "9999"){
         //verificamos si el device_uuid ya esta registrado en la db
         getValidarDeviceUuid(page_id, device.uuid, PUSH_NOTIFICATION_TOKEN);
@@ -54,6 +54,24 @@ $('#planes').live('pagebeforeshow', function(event, ui) {
     //inicializamos el carrousel slider
     getCategoriasByCarrousel(page_id);
     getPlanes(page_id);
+});
+
+//RESTAURANTES
+$('#restaurantes').live('pagebeforeshow', function(event, ui) {
+    var page_id = $(this).attr("id");
+    getZonas(page_id);
+    //inicializamos el carrousel slider
+    getCategoriasByCarrousel(page_id);
+    getRestaurantes(page_id);
+});
+
+//MENU DESCRIPCION
+$('#menu_descripcion').live('pagebeforeshow', function(event, ui) {
+    var page_id = $(this).attr("id");
+    var id = getUrlVars()["id"];
+    //si en undefined verificamos su url, para el redirect automatico
+    if(id == undefined) id = getUrl($(ui.prevPage).context.baseURI)["id"];
+    getMenuById(page_id, id);
 });
 
 //PLAN DESCRIPCION
@@ -348,6 +366,312 @@ function getCategoriasByCarrousel(parent_id, categoria_id){
                     imagen_active.attr("src",BASE_URL_APP+'img/categorias/' + imagen_active.attr("alt"));
                 }
             });
+        }
+	});
+}
+
+//OBTENEMOS LOS RESTAURANTES
+function getRestaurantes(parent_id){
+    var parent = $("#"+parent_id);
+    var container = parent.find(".ui-listview");
+    container.find('li').remove();
+    
+    parent.find(".ui-content").hide();
+    
+	$.getJSON(BASE_URL_APP + 'locals/mobileGetRestaurantes'+"/"+CIUDAD_ID, function(data) {
+        
+        if(data.items){
+            //mostramos loading
+            $.mobile.loading( 'show' );
+            
+    		items = data.items;
+            if(items.length){
+        		$.each(items, function(index, item) {
+                	
+                    var class_categoria = 'categoria_'+item.Local.categoria_id;
+                    var class_zona = 'zona_'+item.Local.zona_id;
+                    var kilomentros = distance(LATITUDE,LONGITUDE,item.Local.latitud,item.Local.longitud,'K');
+                    var imagen = item.Local.imagen!=""?item.Local.imagen:"default.png";
+                    
+                    var html='<li class="'+class_categoria+' '+class_zona+'">' +
+                        '<img src="'+BASE_URL_APP+'img/locales/thumbnails/' + imagen + '"/>' +
+                        '<div class="content_recuadro">' +
+                            '<div class="content_descripcion">' +
+                                '<div class="ubicacion">' +
+                                    '<h3 class="ui-li-heading">' +
+                                        '<a href="menu_descripcion.html?id='+item.Local.id+'">'+item.Local.title+'</a>' +
+                                    '</h3>' +
+                                '</div>' +
+                                '<div class="km">' +
+                                    '<b>'+parseFloat(kilomentros).toFixed(2)+' km</b>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</li>';
+        		    
+                    container.append(html);
+        		});
+                
+                //refresh
+        		container.listview('refresh');
+                
+                container.find("li:last img").load(function() {
+                    //mostramos todos los planes
+                    container.find("li").show();
+                    
+                    //link a las imagenes
+                    container.find("li").each(function( index ) {
+                        $(this).find("img").wrap("<a href='"+$(this).find(".content_recuadro a").attr("href")+"'></a>");
+                    });
+                    
+                    //ocultamos loading
+                    $.mobile.loading( 'hide' );
+                    parent.find(".ui-content").fadeIn("slow");
+                });
+            }else{
+                container.append("<li><p class='ningun_plan'>HOY NO TENEMOS NING&Uacute;N RESTAURANTE DISPONIBLE.</p></li>");
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+                parent.find(".ui-content").fadeIn("slow");
+            }
+        }
+	});
+}
+
+function unserialize(data) {
+// discuss at: http://phpjs.org/functions/unserialize/
+// original by: Arpad Ray (mailto:arpad@php.net)
+// improved by: Pedro Tainha (http://www.pedrotainha.com)
+// improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+// improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+// improved by: Chris
+// improved by: James
+// improved by: Le Torbi
+// improved by: Eli Skeggs
+// bugfixed by: dptr1988
+// bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+// bugfixed by: Brett Zamir (http://brett-zamir.me)
+// revised by: d3x
+// input by: Brett Zamir (http://brett-zamir.me)
+// input by: Martin (http://www.erlenwiese.de/)
+// input by: kilops
+// input by: Jaroslaw Czarniak
+// note: We feel the main purpose of this function should be to ease the transport of data between php & js
+// note: Aiming for PHP-compatibility, we have to translate objects to arrays
+// example 1: unserialize('a:3:{i:0;s:5:"Kevin";i:1;s:3:"van";i:2;s:9:"Zonneveld";}');
+// returns 1: ['Kevin', 'van', 'Zonneveld']
+// example 2: unserialize('a:3:{s:9:"firstName";s:5:"Kevin";s:7:"midName";s:3:"van";s:7:"surName";s:9:"Zonneveld";}');
+// returns 2: {firstName: 'Kevin', midName: 'van', surName: 'Zonneveld'}
+var that = this,
+utf8Overhead = function (chr) {
+// http://phpjs.org/functions/unserialize:571#comment_95906
+var code = chr.charCodeAt(0);
+if (code < 0x0080) {
+return 0;
+}
+if (code < 0x0800) {
+return 1;
+}
+return 2;
+};
+error = function (type, msg, filename, line) {
+throw new that.window[type](msg, filename, line);
+};
+read_until = function (data, offset, stopchr) {
+var i = 2,
+buf = [],
+chr = data.slice(offset, offset + 1);
+while (chr != stopchr) {
+if ((i + offset) > data.length) {
+error('Error', 'Invalid');
+}
+buf.push(chr);
+chr = data.slice(offset + (i - 1), offset + i);
+i += 1;
+}
+return [buf.length, buf.join('')];
+};
+read_chrs = function (data, offset, length) {
+var i, chr, buf;
+buf = [];
+for (i = 0; i < length; i++) {
+chr = data.slice(offset + (i - 1), offset + i);
+buf.push(chr);
+length -= utf8Overhead(chr);
+}
+return [buf.length, buf.join('')];
+};
+_unserialize = function (data, offset) {
+var dtype, dataoffset, keyandchrs, keys, contig,
+length, array, readdata, readData, ccount,
+stringlength, i, key, kprops, kchrs, vprops,
+vchrs, value, chrs = 0,
+typeconvert = function (x) {
+return x;
+};
+if (!offset) {
+offset = 0;
+}
+dtype = (data.slice(offset, offset + 1))
+.toLowerCase();
+dataoffset = offset + 2;
+switch (dtype) {
+case 'i':
+typeconvert = function (x) {
+return parseInt(x, 10);
+};
+readData = read_until(data, dataoffset, ';');
+chrs = readData[0];
+readdata = readData[1];
+dataoffset += chrs + 1;
+break;
+case 'b':
+typeconvert = function (x) {
+return parseInt(x, 10) !== 0;
+};
+readData = read_until(data, dataoffset, ';');
+chrs = readData[0];
+readdata = readData[1];
+dataoffset += chrs + 1;
+break;
+case 'd':
+typeconvert = function (x) {
+return parseFloat(x);
+};
+readData = read_until(data, dataoffset, ';');
+chrs = readData[0];
+readdata = readData[1];
+dataoffset += chrs + 1;
+break;
+case 'n':
+readdata = null;
+break;
+case 's':
+ccount = read_until(data, dataoffset, ':');
+chrs = ccount[0];
+stringlength = ccount[1];
+dataoffset += chrs + 2;
+readData = read_chrs(data, dataoffset + 1, parseInt(stringlength, 10));
+chrs = readData[0];
+readdata = readData[1];
+dataoffset += chrs + 2;
+if (chrs != parseInt(stringlength, 10) && chrs != readdata.length) {
+error('SyntaxError', 'String length mismatch');
+}
+break;
+case 'a':
+readdata = {};
+keyandchrs = read_until(data, dataoffset, ':');
+chrs = keyandchrs[0];
+keys = keyandchrs[1];
+dataoffset += chrs + 2;
+length = parseInt(keys, 10);
+contig = true;
+for (i = 0; i < length; i++) {
+kprops = _unserialize(data, dataoffset);
+kchrs = kprops[1];
+key = kprops[2];
+dataoffset += kchrs;
+vprops = _unserialize(data, dataoffset);
+vchrs = vprops[1];
+value = vprops[2];
+dataoffset += vchrs;
+if (key !== i)
+contig = false;
+readdata[key] = value;
+}
+if (contig) {
+array = new Array(length);
+for (i = 0; i < length; i++)
+array[i] = readdata[i];
+readdata = array;
+}
+dataoffset += 1;
+break;
+default:
+error('SyntaxError', 'Unknown / Unhandled data type(s): ' + dtype);
+break;
+}
+return [dtype, dataoffset - offset, typeconvert(readdata)];
+};
+return _unserialize((data + ''), 0)[2];
+}
+
+//OBTENEMOS EL MENU SEGUN EL ID
+function getMenuById(parent_id, local_id){
+    var parent = $("#"+parent_id);
+    var container = parent.find("#carrousel_plan");
+    container.find('.m-item').remove();
+    container.find(".m-carousel-controls > a").remove();
+    
+    parent.find(".ui-content").hide();
+    
+    var nav_opciones = parent.find(".nav-opciones");
+    nav_opciones.find("li:nth-child(3)").removeClass().addClass("ui-block-c");
+    nav_opciones.find("li:nth-child(4)").removeClass().addClass("ui-block-d");
+    nav_opciones.find("li:nth-child(5)").removeClass().addClass("ui-block-e");
+    nav_opciones.find("li:nth-child(6)").removeClass().addClass("ui-block-f");
+    
+	$.getJSON(BASE_URL_APP + 'menus/mobileGetMenuDia/'+local_id, function(data) {
+        
+        if(data.items){
+            console.log(data.items);
+            //mostramos loading
+            $.mobile.loading( 'show' );
+            
+            items = data.items;
+            if(items.length){
+        		$.each(items, function(index, menu) {
+            
+            //var local = data.item.Local;
+            //var menus = data.items.Menu;
+           	//$.each(menus, function(index, menu) {
+           	    var imagen = menu.Menu.imagen!=""?menu.Menu.imagen:"default.png";
+           	    var mclass = ""; 
+           	    if(index == 0) mclass = "m-active";
+                var html='<div class="m-item '+mclass+'">' +
+                    '<div data-role="navbar" data-corners="false" class="ui-navbar ui-mini" role="navigation">' + 
+                        '<ul class="ui-grid-b">' + 
+                            '<li class="ui-block-a">' + 
+                                '&nbsp;' +
+                            '</li>' + 
+                            '<li class="ui-block-b">' +
+                                '<h3>'+menu.Menu.nombre+'</h3>' +
+                            '</li>' +
+                            '<li class="ui-block-c">' +
+                                '&nbsp;' +
+                            '</li>' +
+                        '</ul>' +
+                    '</div>' +
+                    '<img src="'+BASE_URL_APP+'img/menus/' + imagen + '"/>' +
+                '</div>';
+                
+           	    container.find(".m-carousel-inner").append(html);
+                //container.find(".m-carousel-controls").append('<a href="#" data-slide="'+(index+1)+'">'+(index+1)+'</a>');
+            
+            var serializado = unserialize(menu.Menu.serializado);
+            console.log(serializado);
+            var entradas = serializado.primeros;
+            var segundos = serializado.segundos;
+            //llenamoas los datos del plan
+            parent.find(".texto_descripcion").html("<h3>Descripci&oacute;n</h3>"+menu.Menu.descripcion+"<h3>Entradas</h3>"+entradas+"<h3>Segundos</h3>"+segundos+"<h3>Precio</h3>"+menu.Menu.precio);
+            parent.find(".informacion").find(".from").html(menu.Menu.para_la_fecha);
+            parent.find(".informacion").find(".to").html(menu.Menu.para_la_fecha);
+            parent.find(".ir_al_local a").attr("href","local_descripcion.html?id="+local_id);
+            //parent.find("#plan_condiciones").find(".container_descripcion").html(promocion.condicion);
+            //parent.find("#plan_como_reservar").find(".container_descripcion").html(promocion.como_reservar);
+            
+            });
+            
+            //iniciamos el carousel
+            //container.find(".m-carousel-inner").promise().done(function() {
+                //iniciamos el carrousel
+                //container.carousel();
+                
+                //ocultamos loading
+                $.mobile.loading( 'hide' );
+                parent.find(".ui-content").fadeIn("slow");
+            }//);
         }
 	});
 }

@@ -39,6 +39,28 @@
 .ui-content.options .icon_guia .ui-icon{background: url("../img/icon_guia.png") no-repeat scroll 0 0 transparent;height: 42px;width: 48px;margin-left: -23px;background-size: 46px;margin-top: 22px;}
 .ui-content.options .icon_recompensas .ui-icon{background: url("../img/icon_recompensas.png") no-repeat scroll 0 0 transparent;height: 42px;width: 35px;margin-left: -13px;background-size: 35px;margin-top: 21px;}
 .ui-content.options .icon_estoy_aqui .ui-icon{background: url("../img/icon_estoy_aqui.png") no-repeat scroll 0 0 transparent;height: 44px;width: 40px;margin-left: -17px;background-size: 40px;margin-top: 20px;}
+
+.ui-content.options .icon_restaurantes {
+    
+}
+.ui-content.options .icon_restaurantes .ui-btn-inner {
+    background: url("../img/bg_item_restaurantes.png") no-repeat scroll left top transparent;
+    background-size: 252px;
+    height: 21px;
+    width: 248px;
+}
+.ui-content.options .icon_restaurantes .ui-icon{
+    background: url("../img/icon_restaurantes.png") no-repeat scroll 0 0 transparent;
+    height: 20px;
+    width: 20px;
+    margin-left: 20px;
+    background-size: 20px;
+    margin-top: -10px;
+}
+.ui-content.options .icon_restaurantes .ui-btn-text {
+    margin-left: 40px;
+}
+
 .ui-btn-submit.ui-shadow,.ui-btn-normal.ui-shadow{-moz-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,.6) /*{global-box-shadow-color}*/;-webkit-box-shadow: 0px 0px 0px /*{global-box-shadow-size}*/ rgba(0,0,0,0.6) /*{global-box-shadow-color}*/;}
 .ui-btn-corner-all, .ui-corner-all {border-radius: 5px 5px 5px 5px;}
 .ui-btn-submit.ui-btn,.ui-btn-normal.ui-btn{border: none;}
@@ -158,7 +180,7 @@
 .logo.ui-title{margin: .2em 18% .0em;white-space: normal;}
 .logo.ui-title img{width: 100%;height: auto;}
 .ui-popup .ui-btn-corner-all{border-radius: 1em;}
-#view .ui-content, #local_descripcion .ui-content, #recompensa_descripcion .ui-content, #mi_perfil .ui-content, #local_google_map .ui-content, #como_funciona_descripcion .ui-content, #plan_descripcion .ui-content, #quiero_participar_descripcion .ui-content, #registro_email .ui-content{background: #eeeeee;margin: 0 15px 25px 15px;border-radius: 5px;border: 1px solid #d1d1d1;padding: 0;min-height: 190px;}
+#menu_descripcion .ui-content, #view .ui-content, #local_descripcion .ui-content, #recompensa_descripcion .ui-content, #mi_perfil .ui-content, #local_google_map .ui-content, #como_funciona_descripcion .ui-content, #plan_descripcion .ui-content, #quiero_participar_descripcion .ui-content, #registro_email .ui-content{background: #eeeeee;margin: 0 15px 25px 15px;border-radius: 5px;border: 1px solid #d1d1d1;padding: 0;min-height: 190px;}
 
 /* NAVIGATION HEADER */
 .ui-header ul{padding: 0 10px;background: url("../img/bg_top_footer.png") repeat-x scroll bottom left #51555e;height: 63px;}
@@ -241,50 +263,50 @@
 #guia .ui-footer, #recompensas .ui-footer{background-color: #3d3b3b;}
 
 /* LOCALES - PLANES - ESTOY AQUI*/
-#locales .content_top, #planes .content_top, #estoy_aqui .content_top{background: #e2e2e2;width: 100%;}
-#locales .guia_items, #planes .guia_items, #estoy_aqui .guia_items{overflow: hidden;height: 48px;}
-#locales .guia_items .owl-item, #planes .guia_items .owl-item, #estoy_aqui .guia_items .owl-item{height: 48px;}
-#locales .guia_items .owl-item.active, #planes .guia_items .owl-item.active, #estoy_aqui .guia_items .owl-item.active{background: #df086f;}
-#locales .guia_items li, #planes .guia_items li, #estoy_aqui .guia_items li{float: left;}
-#locales .guia_items .recuadro, #planes .guia_items .recuadro, #estoy_aqui .guia_items .recuadro{text-align: center;height: 25px;margin-top: 8px;padding-left: 25px;padding-right: 25px;width: 30px;}
-#locales .guia_items .recuadro a, #planes .guia_items .recuadro a, #estoy_aqui .guia_items .recuadro a{display: inline-block;}
-#locales .guia_items .recuadro img, #planes .guia_items .recuadro img, #estoy_aqui .guia_items .recuadro img{width: 100%;}
-#locales .guia_items p, #planes .guia_items p, #estoy_aqui .guia_items p{font-size: 9px;color: #595858;text-shadow: none;text-align: center;font-family:'century_gothicregular';}
-#locales .guia_items .owl-item.active p, #planes .guia_items .owl-item.active p, #estoy_aqui .guia_items .owl-item.active p{color: #fff;}
-#locales .ui-listview, #planes .ui-listview, #estoy_aqui .ui-listview{margin: 0px;margin-bottom: 2px;}
-#locales .ui-listview li, #planes .ui-listview li, #estoy_aqui .ui-listview li{background: #f2f2f2;}
-#locales .ui-listview li .ui-li-thumb, #planes .ui-listview li .ui-li-thumb, #estoy_aqui .ui-listview li .ui-li-thumb{left: 0px;top: 0;max-height: 60px;min-height: 60px;max-width: 122px;width: 122px;}
-#locales .ui-listview .ui-li-static.ui-li-has-thumb, #planes .ui-listview .ui-li-static.ui-li-has-thumb, #estoy_aqui .ui-listview .ui-li-static.ui-li-has-thumb{padding-left: 122px;padding-right: 10px;padding-top: 0px;padding-bottom: 0;min-height: 60px;margin-top: 2px; margin-bottom: 2px;overflow: hidden;display: none;}
-#locales .ui-listview .ui-li-heading, #planes .ui-listview .ui-li-heading, #estoy_aqui .ui-listview .ui-li-heading{margin-top: 0;white-space: normal;font-size: 12px;text-shadow: none;margin-bottom: 0;line-height: 14px;}
-#locales .ui-listview .ui-li-heading a, #planes .ui-listview .ui-li-heading a, #estoy_aqui .ui-listview .ui-li-heading a{color: #838383;font-family:'century_gothicregular';}
-#locales .ui-listview .content_recuadro, #planes .ui-listview .content_recuadro, #estoy_aqui .ui-listview .content_recuadro{background: url("../img/bg_item_li.png") no-repeat scroll top left transparent;position: relative;left: -24px;padding-left: 24px;width: 100%;padding-bottom: 4px;}
-#locales .ui-listview .content_descripcion, #planes .ui-listview .content_descripcion, #estoy_aqui .ui-listview .content_descripcion{overflow: hidden;border-bottom: 1px dotted #acacac;padding-bottom: 2px;min-height: 45px;max-height: 45px;padding-top: 8px;margin-left: 10px;}
-#locales .ui-listview .content_descripcion .ubicacion, #planes .ui-listview .content_descripcion .ubicacion, #estoy_aqui .ui-listview .content_descripcion .ubicacion{width: 52%;float: left;}
-#locales .ui-listview .content_descripcion .km, #planes .ui-listview .content_descripcion .km, #estoy_aqui .ui-listview .content_descripcion .km{width: 46%;padding: 12px 0;float: right;text-shadow: none;color: #df086f;font-family:'century_gothicregular';font-size: 12px;}
-#locales .ui-listview .content_descripcion .km b, #planes .ui-listview .content_descripcion .km b, #estoy_aqui .ui-listview .content_descripcion .km b{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 80px;display: block;text-align: right;}
-#planes .ningun_plan, #recompensas .ningun_plan, #guia .ningun_plan{color: #df086f;font-size: 13px;text-shadow: none;padding: 10px;}
+#restaurantes .content_top, #locales .content_top, #planes .content_top, #estoy_aqui .content_top{background: #e2e2e2;width: 100%;}
+#restaurantes .guia_items, #locales .guia_items, #planes .guia_items, #estoy_aqui .guia_items{overflow: hidden;height: 48px;}
+#restaurantes .guia_items .owl-item, #locales .guia_items .owl-item, #planes .guia_items .owl-item, #estoy_aqui .guia_items .owl-item{height: 48px;}
+#restaurantes .guia_items .owl-item.active, #locales .guia_items .owl-item.active, #planes .guia_items .owl-item.active, #estoy_aqui .guia_items .owl-item.active{background: #df086f;}
+#restaurantes .guia_items li, #locales .guia_items li, #planes .guia_items li, #estoy_aqui .guia_items li{float: left;}
+#restaurantes .guia_items .recuadro, #locales .guia_items .recuadro, #planes .guia_items .recuadro, #estoy_aqui .guia_items .recuadro{text-align: center;height: 25px;margin-top: 8px;padding-left: 25px;padding-right: 25px;width: 30px;}
+#restaurantes .guia_items .recuadro a, #locales .guia_items .recuadro a, #planes .guia_items .recuadro a, #estoy_aqui .guia_items .recuadro a{display: inline-block;}
+#restaurantes .guia_items .recuadro img, #locales .guia_items .recuadro img, #planes .guia_items .recuadro img, #estoy_aqui .guia_items .recuadro img{width: 100%;}
+#restaurantes .guia_items p, #locales .guia_items p, #planes .guia_items p, #estoy_aqui .guia_items p{font-size: 9px;color: #595858;text-shadow: none;text-align: center;font-family:'century_gothicregular';}
+#restaurantes .guia_items .owl-item.active p, #locales .guia_items .owl-item.active p, #planes .guia_items .owl-item.active p, #estoy_aqui .guia_items .owl-item.active p{color: #fff;}
+#restaurantes .ui-listview, #locales .ui-listview, #planes .ui-listview, #estoy_aqui .ui-listview{margin: 0px;margin-bottom: 2px;}
+#restaurantes .ui-listview li, #locales .ui-listview li, #planes .ui-listview li, #estoy_aqui .ui-listview li{background: #f2f2f2;}
+#restaurantes .ui-listview li .ui-li-thumb, #locales .ui-listview li .ui-li-thumb, #planes .ui-listview li .ui-li-thumb, #estoy_aqui .ui-listview li .ui-li-thumb{left: 0px;top: 0;max-height: 60px;min-height: 60px;max-width: 122px;width: 122px;}
+#restaurantes .ui-listview .ui-li-static.ui-li-has-thumb, #locales .ui-listview .ui-li-static.ui-li-has-thumb, #planes .ui-listview .ui-li-static.ui-li-has-thumb, #estoy_aqui .ui-listview .ui-li-static.ui-li-has-thumb{padding-left: 122px;padding-right: 10px;padding-top: 0px;padding-bottom: 0;min-height: 60px;margin-top: 2px; margin-bottom: 2px;overflow: hidden;display: none;}
+#restaurantes .ui-listview .ui-li-heading, #locales .ui-listview .ui-li-heading, #planes .ui-listview .ui-li-heading, #estoy_aqui .ui-listview .ui-li-heading{margin-top: 0;white-space: normal;font-size: 12px;text-shadow: none;margin-bottom: 0;line-height: 14px;}
+#restaurantes .ui-listview .ui-li-heading a, #locales .ui-listview .ui-li-heading a, #planes .ui-listview .ui-li-heading a, #estoy_aqui .ui-listview .ui-li-heading a{color: #838383;font-family:'century_gothicregular';}
+#restaurantes .ui-listview .content_recuadro, #locales .ui-listview .content_recuadro, #planes .ui-listview .content_recuadro, #estoy_aqui .ui-listview .content_recuadro{background: url("../img/bg_item_li.png") no-repeat scroll top left transparent;position: relative;left: -24px;padding-left: 24px;width: 100%;padding-bottom: 4px;}
+#restaurantes .ui-listview .content_descripcion, #locales .ui-listview .content_descripcion, #planes .ui-listview .content_descripcion, #estoy_aqui .ui-listview .content_descripcion{overflow: hidden;border-bottom: 1px dotted #acacac;padding-bottom: 2px;min-height: 45px;max-height: 45px;padding-top: 8px;margin-left: 10px;}
+#restaurantes .ui-listview .content_descripcion .ubicacion, #locales .ui-listview .content_descripcion .ubicacion, #planes .ui-listview .content_descripcion .ubicacion, #estoy_aqui .ui-listview .content_descripcion .ubicacion{width: 52%;float: left;}
+#restaurantes .ui-listview .content_descripcion .km, #locales .ui-listview .content_descripcion .km, #planes .ui-listview .content_descripcion .km, #estoy_aqui .ui-listview .content_descripcion .km{width: 46%;padding: 12px 0;float: right;text-shadow: none;color: #df086f;font-family:'century_gothicregular';font-size: 12px;}
+#restaurantes .ui-listview .content_descripcion .km b, #locales .ui-listview .content_descripcion .km b, #planes .ui-listview .content_descripcion .km b, #estoy_aqui .ui-listview .content_descripcion .km b{white-space: nowrap;overflow: hidden;text-overflow: ellipsis;width: 80px;display: block;text-align: right;}
+#restaurantes .ningun_plan, #planes .ningun_plan, #planes .ningun_plan, #recompensas .ningun_plan, #guia .ningun_plan{color: #df086f;font-size: 13px;text-shadow: none;padding: 10px;}
 #recompensas .ningun_plan{font-size: 12px;}
 
 /* LOCAL DESCRIPCION  -  PLAN DESCRIPCION */
-#local_descripcion .ui-content, #plan_descripcion .ui-content, #recompensa_descripcion .ui-content{margin: 0px;min-height: 415px;border-radius: 0;border: none;}
-#local_descripcion .nav-opciones li, #plan_descripcion .nav-opciones li{text-align: center;float: left;width: 16%;margin-right: 2px;}
-#local_descripcion .nav-opciones a, #plan_descripcion .nav-opciones a{background: transparent;border: none;display: inline-block;width: 38px;height: 35px;}
-#local_descripcion .nav-opciones .ui-icon, #plan_descripcion .nav-opciones .ui-icon{border: none;margin: 0;padding: 0;box-shadow: 0 0 0;border-radius: 0;width: 35px;height: 35px;}
-#local_descripcion .nav-opciones .ui-btn-inner, #plan_descripcion .nav-opciones .ui-btn-inner{border: none;padding-top: 0;padding-bottom: 0;}
-#local_descripcion .nav-opciones, #plan_descripcion .nav-opciones{padding-bottom: 10px;border-bottom: 1px solid #e3e3e3;}
-#local_descripcion .item_1 .ui-icon, #plan_descripcion .item_1 .ui-icon{background: url("../img/items/q.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
-#local_descripcion .item_2 .ui-icon, #plan_descripcion .item_2 .ui-icon{background: url("../img/items/p.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
-#local_descripcion .item_3 .ui-icon, #plan_descripcion .item_3 .ui-icon{background: url("../img/items/l.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
-#local_descripcion .item_4 .ui-icon, #plan_descripcion .item_4 .ui-icon{background: url("../img/items/a.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
-#local_descripcion .item_5 .ui-icon, #plan_descripcion .item_5 .ui-icon{background: url("../img/items/n.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
-#local_descripcion .item_6 .ui-icon, #plan_descripcion .item_6 .ui-icon{background: url("../img/items/signo.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
-#local_descripcion .content_middle, #plan_descripcion .content_middle, #recompensa_descripcion .content_middle{margin-top: -18px;overflow: hidden;}
-#local_descripcion .content_middle .ui-navbar, #plan_descripcion .content_middle .ui-navbar{border-bottom: 1px solid #fff;}
-#local_descripcion .content_bottom, #plan_descripcion .content_bottom, #recompensa_descripcion .content_bottom{text-shadow: 0 0 0;font-family:'century_gothicregular';}
-#local_descripcion .content_bottom div.texto_descripcion, #plan_descripcion .content_bottom div.texto_descripcion, #recompensa_descripcion .content_bottom div.texto_descripcion{margin: 3px 12px;font-size: 14px;line-height: 14px;/*max-height: 72px;*/min-height: 72px;overflow: hidden;text-shadow: none;background: #d1cfcf;color: #575757;padding: 8px;}
-#local_descripcion .content_bottom .informacion, #plan_descripcion .content_bottom .informacion{overflow: hidden;font-size: 12px;color: #000;margin: 0 12px;padding-top: 3px;margin-bottom: 12px;}
+#menu_descripcion .ui-content, #local_descripcion .ui-content, #plan_descripcion .ui-content, #recompensa_descripcion .ui-content{margin: 0px;min-height: 415px;border-radius: 0;border: none;}
+#menu_descripcion .nav-opciones li, #local_descripcion .nav-opciones li, #plan_descripcion .nav-opciones li{text-align: center;float: left;width: 16%;margin-right: 2px;}
+#menu_descripcion .nav-opciones a, #local_descripcion .nav-opciones a, #plan_descripcion .nav-opciones a{background: transparent;border: none;display: inline-block;width: 38px;height: 35px;}
+#menu_descripcion .nav-opciones .ui-icon, #local_descripcion .nav-opciones .ui-icon, #plan_descripcion .nav-opciones .ui-icon{border: none;margin: 0;padding: 0;box-shadow: 0 0 0;border-radius: 0;width: 35px;height: 35px;}
+#menu_descripcion .nav-opciones .ui-btn-inner, #local_descripcion .nav-opciones .ui-btn-inner, #plan_descripcion .nav-opciones .ui-btn-inner{border: none;padding-top: 0;padding-bottom: 0;}
+#menu_descripcion .nav-opciones, #local_descripcion .nav-opciones, #plan_descripcion .nav-opciones{padding-bottom: 10px;border-bottom: 1px solid #e3e3e3;}
+#menu_descripcion .item_1 .ui-icon, #local_descripcion .item_1 .ui-icon, #plan_descripcion .item_1 .ui-icon{background: url("../img/items/q.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
+#menu_descripcion .item_2 .ui-icon, #local_descripcion .item_2 .ui-icon, #plan_descripcion .item_2 .ui-icon{background: url("../img/items/p.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
+#menu_descripcion .item_3 .ui-icon, #local_descripcion .item_3 .ui-icon, #plan_descripcion .item_3 .ui-icon{background: url("../img/items/l.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
+#menu_descripcion .item_4 .ui-icon, #local_descripcion .item_4 .ui-icon, #plan_descripcion .item_4 .ui-icon{background: url("../img/items/a.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
+#menu_descripcion .item_5 .ui-icon, #local_descripcion .item_5 .ui-icon, #plan_descripcion .item_5 .ui-icon{background: url("../img/items/n.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
+#menu_descripcion .item_6 .ui-icon, #local_descripcion .item_6 .ui-icon, #plan_descripcion .item_6 .ui-icon{background: url("../img/items/signo.png") no-repeat scroll top center transparent;padding-left: 4px;background-size: 35px;}
+#menu_descripcion .content_middle, #local_descripcion .content_middle, #plan_descripcion .content_middle, #recompensa_descripcion .content_middle{margin-top: -18px;overflow: hidden;}
+#menu_descripcion .content_middle .ui-navbar, #local_descripcion .content_middle .ui-navbar, #plan_descripcion .content_middle .ui-navbar{border-bottom: 1px solid #fff;}
+#menu_descripcion .content_bottom, #local_descripcion .content_bottom, #plan_descripcion .content_bottom, #recompensa_descripcion .content_bottom{text-shadow: 0 0 0;font-family:'century_gothicregular';}
+#menu_descripcion .content_bottom div.texto_descripcion, #local_descripcion .content_bottom div.texto_descripcion, #plan_descripcion .content_bottom div.texto_descripcion, #recompensa_descripcion .content_bottom div.texto_descripcion{margin: 3px 12px;font-size: 14px;line-height: 14px;/*max-height: 72px;*/min-height: 72px;overflow: hidden;text-shadow: none;background: #d1cfcf;color: #575757;padding: 8px;}
+#menu_descripcion .content_bottom .informacion, #local_descripcion .content_bottom .informacion, #plan_descripcion .content_bottom .informacion{overflow: hidden;font-size: 12px;color: #000;margin: 0 12px;padding-top: 3px;margin-bottom: 12px;}
 #local_descripcion .content_bottom .informacion label{color: #df086f;display: block;}
-#local_descripcion .content_bottom .informacion li span, #local_descripcion .content_bottom .informacion li a{color: #000;}
+#menu_descripcion .content_bottom .informacion li span, #local_descripcion .content_bottom .informacion li a{color: #000;}
 #local_descripcion .content_bottom .informacion li{float: left;line-height: 12px;letter-spacing: -1px;width: 49%;}
 #local_descripcion .content_bottom .informacion .planes_hoy{position: relative;clear: both;width: 124px;margin: 0 auto;margin-top: 18px;}
 #local_descripcion .content_bottom .informacion .planes_hoy a{background: url("../img/bg_planes_hoy.png") no-repeat scroll top left transparent;padding-left: 40px;background-size: 123px;width: 84px;height: 20px;margin-top: -1px;font-size: 10px;padding-top: 7px;color: #fff;text-shadow: 0 1px 1px #6c6f77;display: inline-block;font-weight: normal;}
@@ -352,10 +374,21 @@
 #local_google_map #map_canvas { height: 100% }
 
 /* PLAN DESCRIPCION */
-#plan_descripcion .content_bottom .informacion{padding-top: 0px;margin-top: 0px;font-style: italic;color: #838383;font-size: 11px;}
-#plan_descripcion .content_bottom div.texto_descripcion{/*max-height: 102px;*/min-height: 102px;}
-#plan_descripcion .content_bottom .informacion label, #plan_descripcion .content_bottom .informacion span{font-family: 'century_gothicregular'; color: #df086f;}
-#plan_descripcion .content_bottom .informacion span{font-weight: bold;}
+#menu_descripcion .content_bottom .informacion, #plan_descripcion .content_bottom .informacion{padding-top: 0px;margin-top: 0px;font-style: italic;color: #838383;font-size: 11px;}
+#menu_descripcion .content_bottom div.texto_descripcion, #plan_descripcion .content_bottom div.texto_descripcion{/*max-height: 102px;*/min-height: 102px;}
+
+#menu_descripcion .content_bottom div.texto_descripcion h3 {
+    color: #df086f;
+    font-family: 'century_gothicregular';
+    padding: 5px 0;
+}
+#menu_descripcion .content_bottom .items_enlaces .ir_al_local {
+    margin: 15px auto;
+    width: 95px;
+}
+
+#menu_descripcion .content_bottom .informacion label, #menu_descripcion .content_bottom .informacion span, #plan_descripcion .content_bottom .informacion label, #plan_descripcion .content_bottom .informacion span{font-family: 'century_gothicregular'; color: #df086f;}
+#menu_descripcion .content_bottom .informacion span, #plan_descripcion .content_bottom .informacion span{font-weight: bold;}
 
 /* PLAN DESCRIPCON - POPUP */
 .container_popup{border-radius: 5px;overflow: hidden;margin: 10px;min-width: 90%;}
