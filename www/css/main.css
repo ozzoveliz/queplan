@@ -41,7 +41,7 @@
 .ui-content.options .icon_estoy_aqui .ui-icon{background: url("../img/icon_estoy_aqui.png") no-repeat scroll 0 0 transparent;height: 44px;width: 40px;margin-left: -17px;background-size: 40px;margin-top: 20px;}
 
 .ui-content.options .icon_restaurantes {
-    
+    height:50px !important;
 }
 .ui-content.options .icon_restaurantes .ui-btn-inner {
     background: url("../img/bg_item_restaurantes.png") no-repeat scroll left top transparent;
@@ -190,7 +190,7 @@
 .ui-header .volver{background: url("../img/bg_volver.png") no-repeat scroll center top transparent;height: 30px;border: 0;background-size: 63px;box-shadow: none;}
 .ui-header .volver .ui-btn-inner{border: 0;}
 .ui-header .page{text-align: right;margin-top: 3px;width: 53%;}
-.ui-header .page img{width: 128px;position: absolute;left: 32.5%;}
+.ui-header .page img{width: 128px;position: absolute;left: 32.5%;z-index: 999;}
 .ui-header .setting{width: 25%;}
 
 /* NAVIGATION FOOTER */
@@ -288,6 +288,11 @@
 #recompensas .ningun_plan{font-size: 12px;}
 
 /* LOCAL DESCRIPCION  -  PLAN DESCRIPCION */
+
+#menu_descripcion .m-carousel-photos .carrousel_shadow {
+    top: -43px;
+}
+
 #menu_descripcion .ui-content, #local_descripcion .ui-content, #plan_descripcion .ui-content, #recompensa_descripcion .ui-content{margin: 0px;min-height: 415px;border-radius: 0;border: none;}
 #menu_descripcion .nav-opciones li, #local_descripcion .nav-opciones li, #plan_descripcion .nav-opciones li{text-align: center;float: left;width: 16%;margin-right: 2px;}
 #menu_descripcion .nav-opciones a, #local_descripcion .nav-opciones a, #plan_descripcion .nav-opciones a{background: transparent;border: none;display: inline-block;width: 38px;height: 35px;}
@@ -409,6 +414,19 @@
 #ciudades .ui-header.ui-bar-inherit{background: transparent;border: none;overflow: hidden;z-index: 10;}
 #ciudades.ui-page p.text {text-align: center;text-shadow: 0 0 0;color: #fff;font-weight: normal;font-family: 'century_gothicregular';font-size: 21px;letter-spacing: 1px;}
 #ciudades.ui-page p.text span{background: #fc027e;padding: 0 5px;}
+
+#home .ui-content {
+    margin-top: -38px;
+}
+
+#home .ui-title img {
+    position:relative;
+    z-index:10;
+}
+
+#restaurantes .guia_items {
+    display:none !important;
+}
 
 /* HOME IPAD AND MOBILE*/
 /* #Mobile (Landscape)

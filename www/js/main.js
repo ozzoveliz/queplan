@@ -377,8 +377,10 @@ function getRestaurantes(parent_id){
     container.find('li').remove();
     
     parent.find(".ui-content").hide();
+
+    console.log(BASE_URL_APP + 'locals/mobileGetRestaurantes/'+LATITUDE+"/"+LONGITUDE+"/"+CIUDAD_ID);
     
-	$.getJSON(BASE_URL_APP + 'locals/mobileGetRestaurantes'+"/"+CIUDAD_ID, function(data) {
+	$.getJSON(BASE_URL_APP + 'locals/mobileGetRestaurantes/'+LATITUDE+"/"+LONGITUDE+"/"+CIUDAD_ID, function(data) {
         
         if(data.items){
             //mostramos loading
@@ -636,14 +638,14 @@ function getMenuById(parent_id, local_id){
                                 '&nbsp;' +
                             '</li>' + 
                             '<li class="ui-block-b">' +
-                                '<h3>'+menu.Menu.nombre+'</h3>' +
+                                '&nbsp;' +
                             '</li>' +
                             '<li class="ui-block-c">' +
                                 '&nbsp;' +
                             '</li>' +
                         '</ul>' +
                     '</div>' +
-                    '<img src="'+BASE_URL_APP+'img/menus/' + imagen + '"/>' +
+                    //'<img src="'+BASE_URL_APP+'img/menus/' + imagen + '"/>' +
                 '</div>';
                 
            	    container.find(".m-carousel-inner").append(html);
@@ -651,12 +653,31 @@ function getMenuById(parent_id, local_id){
             
             var serializado = unserialize(menu.Menu.serializado);
             console.log(serializado);
-            var entradas = serializado.primeros;
-            var segundos = serializado.segundos;
+            var entradas = "";
+            entradas = serializado.primeros;
+            if(entradas != "")
+                entradas = "<h3>Entradas</h3>"+entradas;
+            var segundos = "";
+            segundos = serializado.segundos;
+            if(segundos != "")
+                segundos = "<h3>Segundos</h3>"+segundos;
+            var postres = "";
+            postres = serializado.postres;
+            if(postres != "")
+                postres = "<h3>Postres</h3>"+postres;
+            var descripcion = "";
+            descripcion = menu.Menu.descripcion;
+            if(descripcion != "")
+                descripcion = "<h3>Descripci&oacute;n</h3>"+descripcion;
+            var precio = "";
+            precio = menu.Menu.precio;
+            if(precio != "")
+                precio = "<h3>Precio</h3>"+precio;
             //llenamoas los datos del plan
-            parent.find(".texto_descripcion").html("<h3>Descripci&oacute;n</h3>"+menu.Menu.descripcion+"<h3>Entradas</h3>"+entradas+"<h3>Segundos</h3>"+segundos+"<h3>Precio</h3>"+menu.Menu.precio);
-            parent.find(".informacion").find(".from").html(menu.Menu.para_la_fecha);
-            parent.find(".informacion").find(".to").html(menu.Menu.para_la_fecha);
+            var texto_descripcion = descripcion+entradas+segundos+postres+precio;
+            parent.find(".texto_descripcion").html(texto_descripcion);
+            //parent.find(".informacion").find(".from").html(menu.Menu.para_la_fecha);
+            //parent.find(".informacion").find(".to").html(menu.Menu.para_la_fecha);
             parent.find(".ir_al_local a").attr("href","local_descripcion.html?id="+local_id);
             //parent.find("#plan_condiciones").find(".container_descripcion").html(promocion.condicion);
             //parent.find("#plan_como_reservar").find(".container_descripcion").html(promocion.como_reservar);
@@ -824,6 +845,8 @@ function getLocalesById(parent_id, categoria_id){
     container.find('li').remove();
     
     parent.find(".ui-content").hide();
+    
+    console.log(BASE_URL_APP + 'locals/mobileGetLocales/'+LATITUDE+"/"+LONGITUDE+"/"+CIUDAD_ID);
     
 	$.getJSON(BASE_URL_APP + 'locals/mobileGetLocales/'+LATITUDE+"/"+LONGITUDE+"/"+CIUDAD_ID, function(data) {
         
@@ -1326,7 +1349,8 @@ function getValidarDeviceUuid(parent_id, device_uuid, token_notificacion){
             //sino le pedimos que se logee con fb o tw
             //recuperamos los datos de ciudad
             var usuario_ciudad = data.usuario.Usuario.ciudad_id;
-            if(usuario_ciudad){
+            //usuario_ciudad = '0';
+            if(usuario_ciudad && usuario_ciudad!='0'){
                 CIUDAD_ID = usuario_ciudad;
                 if(isLogin()){
                     $.mobile.changePage('#home');
