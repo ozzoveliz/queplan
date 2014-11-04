@@ -685,15 +685,18 @@ function getMenuById(parent_id, local_id){
                 precio = "";
             else
                 precio = "<h3>Precio</h3>"+"<p class='price'>"+precio+"</p>";
+            var para_la_fecha = menu.Menu.para_la_fecha;
+            para_la_fecha = para_la_fecha.split("-");
+            console.log(para_la_fecha);
             var nombre_menu = "";
-            nombre_menu = "<h3>Menu para el d&iacute;a "+menu.Menu.para_la_fecha+" del Restaurante "+menu.Local.title+"</h3>"
+            nombre_menu = "<h3>Menu para el d&iacute;a "+para_la_fecha[2]+"-"+para_la_fecha[1]+"-"+para_la_fecha[0]+" del Restaurante "+menu.Local.title+"</h3>"
             //llenamoas los datos del plan
             var texto_descripcion = nombre_menu+descripcion+entradas+segundos+postres+precio;
             parent.find(".texto_descripcion").html(texto_descripcion);
             //parent.find(".informacion").find(".from").html(menu.Menu.para_la_fecha);
             //parent.find(".informacion").find(".to").html(menu.Menu.para_la_fecha);
             parent.find(".ir_al_local a").attr("href","local_descripcion.html?id="+local_id);
-            parent.find(".llamar_al_local a").attr("href","callto:"+menu.Local.telefono);
+            parent.find(".llamar_al_local a").attr("href","tel:"+menu.Local.telefono);
             //parent.find("#plan_condiciones").find(".container_descripcion").html(promocion.condicion);
             //parent.find("#plan_como_reservar").find(".container_descripcion").html(promocion.como_reservar);
             
