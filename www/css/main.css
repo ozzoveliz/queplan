@@ -387,8 +387,22 @@
     font-family: 'century_gothicregular';
     padding: 5px 0;
 }
+#menu_descripcion .content_bottom div.texto_descripcion p.price {
+    background: #df086f;
+    color: #fff;
+    display: inline;
+}
 #menu_descripcion .content_bottom .items_enlaces .ir_al_local {
-    margin: 15px auto;
+    float: left;
+    margin: 15px 0 15px 15px;
+    width: 95px;
+}
+.ui-navbar li.ir_al_local .ui-btn {
+    border-right-width: 1px;
+}
+#menu_descripcion .content_bottom .items_enlaces .llamar_al_local {
+    float: right;
+    margin: 15px 15px 15px 0;
     width: 95px;
 }
 

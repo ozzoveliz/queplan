@@ -3,7 +3,7 @@
 
 $(document).bind('pagebeforecreate', function(event){
     var page_id = event.target.id;
-    //PUSH_NOTIFICATION_TOKEN = "9999";
+    PUSH_NOTIFICATION_TOKEN = "9999";
     if(page_id == "view" && PUSH_NOTIFICATION_TOKEN == "9999"){
         //verificamos si el device_uuid ya esta registrado en la db
         getValidarDeviceUuid(page_id, device.uuid, PUSH_NOTIFICATION_TOKEN);
@@ -655,30 +655,45 @@ function getMenuById(parent_id, local_id){
             console.log(serializado);
             var entradas = "";
             entradas = serializado.primeros;
-            if(entradas != "")
+            if(entradas == "" || entradas == "<p><br></p>")
+                entradas = "";
+            else
                 entradas = "<h3>Entradas</h3>"+entradas;
             var segundos = "";
             segundos = serializado.segundos;
-            if(segundos != "")
+            if(segundos == "" || segundos == "<p><br></p>")
+                segundos = "";
+            else
                 segundos = "<h3>Segundos</h3>"+segundos;
             var postres = "";
             postres = serializado.postres;
-            if(postres != "")
+            if(postres == "" || postres == "<p><br></p>")
+                postres = "";
+            else
                 postres = "<h3>Postres</h3>"+postres;
             var descripcion = "";
             descripcion = menu.Menu.descripcion;
-            if(descripcion != "")
+            console.log("descripcion: "+descripcion);
+            if(descripcion == "" || descripcion == "<p><br></p>")
+                descripcion = "";
+            else
                 descripcion = "<h3>Descripci&oacute;n</h3>"+descripcion;
             var precio = "";
             precio = menu.Menu.precio;
-            if(precio != "")
-                precio = "<h3>Precio</h3>"+precio;
+            console.log("precio: "+precio);
+            if(precio == "" || precio == "<p><br></p>")
+                precio = "";
+            else
+                precio = "<h3>Precio</h3>"+"<p class='price'>"+precio+"</p>";
+            var nombre_menu = "";
+            nombre_menu = "<h3>Menu para el d&iacute;a "+menu.Menu.para_la_fecha+" del Restaurante "+menu.Local.title+"</h3>"
             //llenamoas los datos del plan
-            var texto_descripcion = descripcion+entradas+segundos+postres+precio;
+            var texto_descripcion = nombre_menu+descripcion+entradas+segundos+postres+precio;
             parent.find(".texto_descripcion").html(texto_descripcion);
             //parent.find(".informacion").find(".from").html(menu.Menu.para_la_fecha);
             //parent.find(".informacion").find(".to").html(menu.Menu.para_la_fecha);
             parent.find(".ir_al_local a").attr("href","local_descripcion.html?id="+local_id);
+            parent.find(".llamar_al_local a").attr("href","callto:"+menu.Local.telefono);
             //parent.find("#plan_condiciones").find(".container_descripcion").html(promocion.condicion);
             //parent.find("#plan_como_reservar").find(".container_descripcion").html(promocion.como_reservar);
             
