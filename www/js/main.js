@@ -689,7 +689,7 @@ function getMenuById(parent_id, local_id){
             para_la_fecha = para_la_fecha.split("-");
             console.log(para_la_fecha);
             var nombre_menu = "";
-            nombre_menu = "<h3>Men&uacute; para el d&iacute;a "+para_la_fecha[2]+"-"+para_la_fecha[1]+"-"+para_la_fecha[0]+" del Restaurante "+menu.Local.title+"</h3>"
+            nombre_menu = "<h3>Men&uacute; para el d&iacute;a "+para_la_fecha[2]+"-"+para_la_fecha[1]+"-"+para_la_fecha[0]+" del Restaurante <span>"+menu.Local.title+"</span></h3>"
             //llenamoas los datos del plan
             var texto_descripcion = nombre_menu+descripcion+entradas+segundos+postres+precio;
             parent.find(".texto_descripcion").html(texto_descripcion);

@@ -387,6 +387,9 @@
     font-family: 'century_gothicregular';
     padding: 5px 0;
 }
+#menu_descripcion .content_bottom div.texto_descripcion h3 span {
+    color: #000;
+}
 #menu_descripcion .content_bottom div.texto_descripcion p.price {
     background: #df086f;
     color: #fff;
@@ -404,6 +407,22 @@
     float: right;
     margin: 5px 15px 15px 0;
     width: 95px;
+}
+#menu_descripcion .content_bottom .items_enlaces .ir_al_local .ui-btn-icon-top .ui-btn-inner, 
+#menu_descripcion .content_bottom .items_enlaces .llamar_al_local .ui-btn-icon-top .ui-btn-inner {
+    padding-top: .7em;
+}
+#menu_descripcion .content_bottom .items_enlaces .llamar_al_local .icon_llamar .ui-icon{
+    background: url("../img/icon_llamar.png") no-repeat scroll 0 0 transparent;
+    height: 15px;
+    width: 15px;
+    background-size: 15px;
+    left: 15px;
+    top: 10px;
+    margin-left: 0;
+}
+#menu_descripcion .content_bottom .items_enlaces .llamar_al_local .icon_llamar .ui-btn-text {
+    margin-left: 15px;
 }
 
 #menu_descripcion .content_bottom .informacion label, #menu_descripcion .content_bottom .informacion span, #plan_descripcion .content_bottom .informacion label, #plan_descripcion .content_bottom .informacion span{font-family: 'century_gothicregular'; color: #df086f;}
