@@ -394,7 +394,7 @@
 }
 #menu_descripcion .content_bottom .items_enlaces .ir_al_local {
     float: left;
-    margin: 15px 0 15px 15px;
+    margin: 5px 0 15px 15px;
     width: 95px;
 }
 .ui-navbar li.ir_al_local .ui-btn {
@@ -402,7 +402,7 @@
 }
 #menu_descripcion .content_bottom .items_enlaces .llamar_al_local {
     float: right;
-    margin: 15px 15px 15px 0;
+    margin: 5px 15px 15px 0;
     width: 95px;
 }
 
