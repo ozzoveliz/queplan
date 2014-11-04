@@ -3,7 +3,7 @@
 
 $(document).bind('pagebeforecreate', function(event){
     var page_id = event.target.id;
-    PUSH_NOTIFICATION_TOKEN = "9999";
+    //PUSH_NOTIFICATION_TOKEN = "9999";
     if(page_id == "view" && PUSH_NOTIFICATION_TOKEN == "9999"){
         //verificamos si el device_uuid ya esta registrado en la db
         getValidarDeviceUuid(page_id, device.uuid, PUSH_NOTIFICATION_TOKEN);
